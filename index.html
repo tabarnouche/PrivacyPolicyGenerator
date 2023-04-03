@@ -51,7 +51,10 @@
             address:        $persist('').using(sessionStorage),
             tel:            $persist('').using(sessionStorage),
             email:          $persist('').using(sessionStorage),
-            ga4:            $persist(false).using(sessionStorage),
+            show_ga4:       $persist(false).using(sessionStorage),
+            show_class:     true,
+
+            class_attr: ' class=&quot;&quot;',
 
             hasInput(){
                 return (this.facility_name || this.facilyty_title || this.postal_code || this.address || this.tel || this.email) ? true : false;
@@ -64,7 +67,7 @@
                 this.address = '';
                 this.tel = '';
                 this.email = '';
-                this.ga4 = false;
+                this.show_ga4 = false;
             },
         }"
     >
@@ -81,7 +84,7 @@
         >
 <code>
 <pre class="whitespace-pre-wrap">
-&lt;article class="terms"&gt;
+&lt;article<span x-show="show_class" x-text="class_attr"></span>&gt;
     &lt;h1&gt;プライバシーポリシー&lt;/h1&gt;
 </pre>
 <pre class="whitespace-pre-wrap">
@@ -184,7 +187,7 @@
         &lt;/div&gt;
     &lt;/section&gt;
 </pre>
-<pre class="whitespace-pre-wrap" x-show="ga4">
+<pre class="whitespace-pre-wrap" x-show="show_ga4">
     &lt;section&gt;
         &lt;h2&gt;Googleアナリティクスの利用&lt;/h2&gt;
         &lt;div&gt;
@@ -242,9 +245,14 @@
                     <input type="tel" placeholder="電話番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="tel">
                     <input type="email" placeholder="メールアドレス" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="email">
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" x-model="ga4">
+                        <input type="checkbox" value="" class="sr-only peer" x-model="show_ga4">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
                         <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Googleアナリティクスを使う</span>
+                    </label>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" x-model="show_class">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class属性を追加する</span>
                     </label>
                 </div>
 
@@ -260,7 +268,7 @@
 
                     <button type="button"
                         class="border-2 border-solid border-red-300 rounded-lg px-12 py-2 bg-red-500 text-white shadow hover:bg-red-400 active:bg-red-300 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-300 disabled:shadow-none transition-all select-none"
-                        :disabled="!hasInput() && !ga4"
+                        :disabled="!hasInput() && !show_ga4"
                         @click="
                             if(confirm('入力内容をリセットしてもいいですか？')){ resetInput(); }
                         "
