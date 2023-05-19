@@ -56,8 +56,8 @@
             tel:            $persist('').using(sessionStorage),
             email:          $persist('').using(sessionStorage),
             show_ga4:       $persist(false).using(sessionStorage),
-            show_class:     false,
-            show_style_tag: false,
+            show_class:     $persist(false).using(sessionStorage),
+            show_style_tag: $persist(false).using(sessionStorage),
 
             makeClass(class_name){
                 return ' class=&quot;' + class_name + '&quot;';
