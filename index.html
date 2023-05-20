@@ -57,7 +57,7 @@
             email:          $persist('').using(sessionStorage),
             show_ga4:       $persist(false).using(sessionStorage),
             show_class:     $persist(false).using(sessionStorage),
-            show_style_tag: $persist(false).using(sessionStorage),
+            set_style:      $persist(false).using(sessionStorage),
 
             makeClass(class_name){
                 return ' class=&quot;' + class_name + '&quot;';
@@ -76,7 +76,7 @@
                 this.email = '';
                 this.show_ga4 = false;
                 this.show_class = false;
-                this.show_style_tag = false;
+                this.set_style = false;
             },
         }"
     >
@@ -216,31 +216,33 @@
             &lt;p<span x-show="show_class" x-text="makeClass('pp-section__paragraph')"></span>&gt;
                 本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
             &lt;/p&gt;
-            &lt;dl<span x-show="show_class" x-text="makeClass('pp-section__list pp-section__defList')"></span>&gt;
-                &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
-                    &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;施設名&lt;/dt&gt;
-                    &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="facility_name"></span>&lt;/dd&gt;
-                &lt;/div&gt;
-                &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
-                    &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;住所&lt;/dt&gt;
-                    &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="postal_code"></span><span x-text="address"></span>&lt;/dd&gt;
-                &lt;/div&gt;
-                &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
-                    &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;電話番号&lt;/dt&gt;
-                    &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="tel"></span>&lt;/dd&gt;
-                &lt;/div&gt;
-                &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
-                    &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;メールアドレス&lt;/dt&gt;
-                    &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="email"></span>&lt;/dd&gt;
-                &lt;/div&gt;
-            &lt;/dl&gt;
+            &lt;address&gt;
+                &lt;dl<span x-show="show_class" x-text="makeClass('pp-section__list pp-section__defList')"></span>&gt;
+                    &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
+                        &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;施設名&lt;/dt&gt;
+                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="facility_name"></span>&lt;/dd&gt;
+                    &lt;/div&gt;
+                    &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
+                        &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;住所&lt;/dt&gt;
+                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="postal_code"></span><span x-text="address"></span>&lt;/dd&gt;
+                    &lt;/div&gt;
+                    &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
+                        &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;電話番号&lt;/dt&gt;
+                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="tel"></span>&lt;/dd&gt;
+                    &lt;/div&gt;
+                    &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
+                        &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;メールアドレス&lt;/dt&gt;
+                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="email"></span>&lt;/dd&gt;
+                    &lt;/div&gt;
+                &lt;/dl&gt;
+            &lt;/address&gt;
         &lt;/div&gt;
     &lt;/section&gt;
 </pre>
 <pre class="whitespace-pre-wrap">
 &lt;/article&gt;
 </pre>
-<pre class="whitespace-pre-wrap" x-show="show_style_tag">
+<pre class="whitespace-pre-wrap" x-show="show_class">
 
 &lt;style&gt;
     .pp{
@@ -289,12 +291,12 @@
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" value="" class="sr-only peer" x-model="show_class">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class属性を追加する</span>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class(FLOCSS)を追加する</span>
                     </label>
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" x-model="show_style_tag">
+                        <input type="checkbox" value="" class="sr-only peer" x-model="set_style">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">styleタグを追加する</span>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">styleの初期値を設定する</span>
                     </label>
                 </div>
 
