@@ -80,7 +80,7 @@
         </template>
 
         <main
-            class="flex flex-col gap-y-4 bg-white overflow-auto p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200"
+            class="bg-white overflow-auto p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200"
             x-ref="terms"
         >
 <code>
@@ -208,7 +208,7 @@
             &lt;p<span x-show="show_class" x-text="makeClass('pp-section__paragraph')"></span>&gt;
                 本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
             &lt;/p&gt;
-            &lt;address&gt;
+            &lt;address<span x-show="show_class" x-text="makeClass('pp-section__inquiry')"></span>&gt;
                 &lt;dl<span x-show="show_class" x-text="makeClass('pp-section__list pp-section__defList')"></span>&gt;
                     &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
                         &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;施設名&lt;/dt&gt;
@@ -238,58 +238,96 @@
 
 &lt;style&gt;
     .pp{
+        <span x-show="set_style" x-text="
+        "></span>
     } 
     .pp-title{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section{
+        <span x-show="set_style" x-text="
+            'margin-bottom: 4rem;'
+        "></span>
     }
     .pp-section__heading{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__body{
+        <span x-show="set_style" x-text="
+            'line-height: 2;'
+        "></span>
     }
     .pp-section__paragraph{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__list{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__listItem{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__defList{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__defListPair{
+        <span x-show="set_style" x-text="
+            'display: flex;'
+        "></span>
     }
     .pp-section__defListTerm{
+        <span x-show="set_style" x-text="
+        "></span>
     }
     .pp-section__defListDesc{
+        <span x-show="set_style" x-text="
+            'margin-left: 0;'
+        "></span>
+    }
+    .pp-section__inquiry{
+        <span x-show="set_style" x-text="
+            'font-style: normal;'
+        "></span>
     }
 &lt;/style&gt;
 </pre>
 </code>
         </main>
 
-        <aside class="flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200">
+        <!-- <aside class="flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200"> -->
+        <aside class="absolute lg:relative flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200">
             <div class="flex flex-col justify-between gap-y-16">
-                <div class="flex flex-col gap-4">
-                    <input type="text" placeholder="施設名" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facility_name">
-                    <input type="text" placeholder="当〇〇" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facilyty_title">
-                    <input type="text" placeholder="郵便番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="postal_code">
-                    <input type="text" placeholder="住所" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="address">
-                    <input type="tel" placeholder="電話番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="tel">
-                    <input type="email" placeholder="メールアドレス" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="email">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" x-model="show_ga4">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Googleアナリティクスを使う</span>
-                    </label>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" x-model="show_class">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class(FLOCSS)を追加する</span>
-                    </label>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer" x-model="set_style">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">styleの初期値を設定する</span>
-                    </label>
+                <div class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-4">
+                        <input type="text" placeholder="施設名" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facility_name">
+                        <input type="text" placeholder="当〇〇" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facilyty_title">
+                        <input type="text" placeholder="郵便番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="postal_code">
+                        <input type="text" placeholder="住所" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="address">
+                        <input type="tel" placeholder="電話番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="tel">
+                        <input type="email" placeholder="メールアドレス" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="email">
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" x-model="show_ga4">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Googleアナリティクスを使う</span>
+                        </label>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" x-model="show_class">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class(FLOCSS)を追加する</span>
+                        </label>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" x-model="set_style">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">styleの初期値を設定する</span>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="flex flex-col gap-4">
@@ -304,7 +342,7 @@
 
                     <button type="button"
                         class="border-2 border-solid border-red-300 rounded-lg px-12 py-2 bg-red-500 text-white shadow hover:bg-red-400 active:bg-red-300 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-300 disabled:shadow-none transition-all select-none"
-                        :disabled="!hasInput() && !show_ga4"
+                        :disabled="!hasInput() && !show_ga4 && !show_class && !set_style"
                         @click="
                             if(confirm('入力内容をリセットしてもいいですか？')){ resetInput(); }
                         "
