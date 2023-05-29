@@ -240,6 +240,7 @@
 &lt;style&gt;
     .pp{
         <template x-if="set_style">
+            <span></span>
         </template>
     } 
     .pp-title{
@@ -264,18 +265,22 @@
     }
     .pp-section__paragraph{
         <template x-if="set_style">
+            <span></span>
         </template>
     }
     .pp-section__list{
         <template x-if="set_style">
+            <span></span>
         </template>
     }
     .pp-section__listItem{
         <template x-if="set_style">
+            <span></span>
         </template>
     }
     .pp-section__defList{
         <template x-if="set_style">
+            <span></span>
         </template>
     }
     .pp-section__defListPair{
@@ -285,6 +290,7 @@
     }
     .pp-section__defListTerm{
         <template x-if="set_style">
+            <span></span>
         </template>
     }
     .pp-section__defListDesc{
@@ -316,19 +322,47 @@
                     </div>
                     <div class="flex flex-col gap-4">
                         <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" value="" class="sr-only peer" x-model="show_ga4">
+                            <input
+                                type="checkbox"
+                                value=""
+                                class="sr-only peer"
+                                x-model="show_ga4"
+                            >
                             <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
                             <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">Googleアナリティクスを使う</span>
                         </label>
                         <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" value="" class="sr-only peer" x-model="show_class" x-ref="checkbox_class" @change="!$el.checked && ($refs.checkbox_style.checked = false);">
+                            <input
+                                type="checkbox"
+                                value=""
+                                class="sr-only peer"
+                                x-model="show_class"
+                                x-ref="checkbox_class"
+                                @change="
+                                    if($el.checked){
+                                        $refs.checkbox_style.disabled = false;
+                                    }
+                                    else{
+                                        $refs.checkbox_style.disabled = true;
+                                        $refs.checkbox_style.checked = false;
+                                        set_style = false;
+                                    }  
+                                "
+                            >
                             <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
                             <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">class(FLOCSS)を追加する</span>
                         </label>
                         <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" value="" class="sr-only peer" x-model="set_style" x-ref="checkbox_style">
-                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
-                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none">styleの初期値を設定する</span>
+                            <input
+                                type="checkbox"
+                                value=""
+                                class="sr-only peer"
+                                x-model="set_style"
+                                x-ref="checkbox_style"
+                                :disabled="$refs.checkbox_class.checked ? false : true"
+                            >
+                            <div class="w-11 h-6 bg-gray-200 peer-disabled:cursor-not-allowed peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 select-none peer-disabled:cursor-not-allowed peer-disabled:text-gray-400">styleの初期値を設定する</span>
                         </label>
                     </div>
                 </div>
