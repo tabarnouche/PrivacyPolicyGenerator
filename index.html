@@ -43,7 +43,6 @@
 
             facility_name:  $persist('').using(sessionStorage),
             facilyty_title: $persist('').using(sessionStorage),
-            postal_code:    $persist('').using(sessionStorage),
             address:        $persist('').using(sessionStorage),
             tel:            $persist('').using(sessionStorage),
             email:          $persist('').using(sessionStorage),
@@ -56,13 +55,12 @@
             },
 
             hasInput(){
-                return (this.facility_name || this.facilyty_title || this.postal_code || this.address || this.tel || this.email) ? true : false;
+                return (this.facility_name || this.facilyty_title || this.address || this.tel || this.email) ? true : false;
             },
 
             resetInput(){
                 this.facility_name = '';
                 this.facilyty_title = '';
-                this.postal_code = '';
                 this.address = '';
                 this.tel = '';
                 this.email = '';
@@ -216,7 +214,7 @@
                     &lt;/div&gt;
                     &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
                         &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;住所&lt;/dt&gt;
-                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="postal_code"></span><span x-text="address"></span>&lt;/dd&gt;
+                        &lt;dd<span x-show="show_class" x-text="makeClass('pp-section__defListDesc')"></span>&gt;<span x-text="address"></span>&lt;/dd&gt;
                     &lt;/div&gt;
                     &lt;div<span x-show="show_class" x-text="makeClass('pp-section__defListPair')"></span>&gt;
                         &lt;dt<span x-show="show_class" x-text="makeClass('pp-section__defListTerm')"></span>&gt;電話番号&lt;/dt&gt;
@@ -300,13 +298,12 @@
         </main>
 
         <!-- <aside class="flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200"> -->
-        <aside class="absolute lg:relative flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200">
+        <aside class="absolute right-0 lg:relative flex justify-between flex-wrap gap-4 overflow-auto bg-white p-8 rounded-lg shadow-lg text-gray-800 dark:bg-gray-600 dark:text-gray-200">
             <div class="flex flex-col justify-between gap-y-16">
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-4">
                         <input type="text" placeholder="施設名" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facility_name">
                         <input type="text" placeholder="当〇〇" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="facilyty_title">
-                        <input type="text" placeholder="郵便番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="postal_code">
                         <input type="text" placeholder="住所" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="address">
                         <input type="tel" placeholder="電話番号" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="tel">
                         <input type="email" placeholder="メールアドレス" class="placeholder:text-gray-400 border-2 border-solid border-gray-300 rounded-lg outline-teal-500 p-2 dark:bg-black" x-model="email">
