@@ -381,7 +381,11 @@
                         class="border-2 border-solid border-red-300 rounded-lg px-12 py-2 bg-red-500 text-white shadow hover:bg-red-400 active:bg-red-300 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-300 disabled:shadow-none transition-all select-none"
                         :disabled="!hasInput() && !show_ga4 && !show_class && !set_style"
                         @click="
-                            if(confirm('入力内容をリセットしてもいいですか？')){ resetInput(); }
+                            if(confirm('入力内容をリセットしてもいいですか？')){
+                                resetInput();
+                                $refs.checkbox_style.disabled = true;
+                                $refs.checkbox_style.checked = false;
+                            }
                         "
                     >
                         入力内容をリセット
